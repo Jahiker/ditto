@@ -13,7 +13,7 @@ get_header();
 ?>
 
 <main id="ditto-index">
-	<?= get_template_part('partials/hello') ?>
+	<?= get_template_part('partials/hero') ?>
 </main>
 
 <?php get_footer(); ?>

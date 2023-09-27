@@ -1,13 +1,16 @@
 <?php
+
 /**
  * 
  * Header.
  *
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+if (!defined('ABSPATH')) {
+  exit; // Exit if accessed directly.
 }
+
+$header_settings = get_field("header_settings", "options");
 ?>
 <!DOCTYPE html>
 <html class="no-js" <?php language_attributes(); ?>>
@@ -23,44 +26,70 @@ if ( ! defined( 'ABSPATH' ) ) {
   <?php wp_head(); ?>
   <script>
     const _dittoURI_ = "<?= get_template_directory_uri() ?>",
-          _dittoURL_ = "<?= get_site_url() ?>";
+      _dittoURL_ = "<?= get_site_url() ?>";
   </script>
+  <script src="<?= get_template_directory_uri() . '/dist/StickyHeader.bundle.js' ?>" defer></script>
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page"> <!-- +Page container -->
+  <!-- Loader -->
+  <?= get_template_part('partials/loader', 'loader', null) ?>
+  <!-- Loader -->
 
-  <header id="header-wrapper">
-    <div class="container">
-      <nav class="navbar">
-        <div class="logo">
-          <?php if (has_custom_logo()): ?>
-            <?php the_custom_logo(); ?>
-          <?php else: ?>
-            <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
-          <?php endif ?>
-        </div>
-        <?php if(get_bloginfo('description') != ''): ?>
-          <div class="slogan">
-            <p><?= get_bloginfo('description') ?></p>
+  <!-- Sticky Header -->
+  <?php if ($header_settings['enable_sticky_header']) : ?>
+    <sticky-header data-scroll-y="<?= $header_settings['enable_sticky_header_on'] ?>"></sticky-header>
+  <?php endif; ?>
+  <!-- Sticky Header -->
+
+  <div id="page" style="opacity: 0;"> <!-- +Page container -->
+    <header id="header-wrapper">
+      <div class="container">
+        <nav class="navbar">
+          <div class="logo">
+            <?php if (has_custom_logo()) : ?>
+              <?php the_custom_logo(); ?>
+            <?php else : ?>
+              <a rel="home" href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" itemprop="url"><?php bloginfo('name'); ?></a>
+            <?php endif ?>
           </div>
-        <?php endif; ?>
-        <div class="main-menu">
-          <div class="hamburguer" onclick="ditto.menu(this)">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <?php
+
+          <div class="nav_menu">
+            <?php
             wp_nav_menu([
               'menu'            => 'main_menu',
               'theme_location'  => 'main_menu',
               'container'       => 'div',
               'menu_class'      => 'main-menu-list',
             ]);
-          ?>   
-        </div>
-      </nav>
-    </div>
-  </header>
+            ?>
+            <theme-toggle class="toggle_theme">
+              <span data-toggle>Theme</span>
+            </theme-toggle>
+          </div>
+
+          <div class="main-menu">
+            <div class="hamburguer" onclick="ditto.menu(this)">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="aside-menu">
+              <?php
+              wp_nav_menu([
+                'menu'            => 'main_menu',
+                'theme_location'  => 'main_menu',
+                'container'       => 'div',
+                'menu_class'      => 'main-menu-list',
+              ]);
+              ?>
+              <theme-toggle>
+                <button type="button" data-toggle>Dark Theme</button>
+              </theme-toggle>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+    </header>

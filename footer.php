@@ -10,13 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<footer id="footer-wrapper">
-    <div class="container">
-        <p>© Ditto Theme <?= date('Y') ?></p>
-    </div>
-</footer>
 
 </div> <!-- -Page container -->
+
+<footer id="footer-wrapper">
+    <div class="container">
+        <p>© Fapromet - <?= date('Y') ?></p>
+    </div>
+</footer>
 
 <?php wp_footer(); ?>
 </body>

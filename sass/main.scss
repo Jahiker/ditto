@@ -1,6 +1,11 @@
-@import 'default_theme';
+@import "./vars";
+@import "./mixins";
+@import "./animations";
+@import "./default_theme";
 
 // Ditto include zone (don't delete anything below)
 // #DittoPartials
+@import "./partials/loader";
+@import "./partials/hero";
 @import "./partials/hello";
 // #DittoTemplates

@@ -1,11 +1,12 @@
 <?php
+
 /**
  * 
  * Default page.
  *
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
@@ -15,7 +16,7 @@ get_header();
 <main id="ditto-page">
 	<section>
 		<div class="container">
-			<p>[Default page]</p>
+			<?= get_template_part('partials/hero') ?>
 		</div>
 	</section>
 </main>

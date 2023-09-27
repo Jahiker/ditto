@@ -1,8 +1,9 @@
-import '../sass/main.scss'
-import $ from 'jquery';
+import "../sass/main.scss";
+import "./ThemeToggle";
+import "./Loader";
 
 window.ditto = {
-    menu: (el) => {
-        $(el).toggleClass('open');
-    }
-}
+  menu: (el) => {
+    el.classList.toggle("open");
+  },
+};
