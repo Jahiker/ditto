@@ -1,4 +1,4 @@
-class ThemeToggle extends HTMLElement {
+export default class ThemeToggle extends HTMLElement {
   constructor() {
     super();
 

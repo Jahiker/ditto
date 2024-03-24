@@ -11,10 +11,6 @@ if (!defined('ABSPATH')) {
 function ditto_scripts()
 {
   $appVersion = wp_get_theme()->get('Version');
-
-  if (preg_match('(127.0.0.1|localhost)', site_url()) != false) {
-    wp_enqueue_script('external-lib', 'https://livejs.com/live.js', '', true);
-  }
   
   wp_enqueue_script( 'app-scripts', get_template_directory_uri() . '/dist/main.bundle.js', null, '1.0.0', true );
 

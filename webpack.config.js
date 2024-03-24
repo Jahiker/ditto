@@ -3,7 +3,12 @@ const webpack = require("webpack");
 require("dotenv").config();
 
 module.exports = {
-  entry: { main: "./js/main.js", StickyHeader: "./js/StickyHeader.js" },
+  entry: {
+    main: "./js/main.js",
+    StickyHeader: "./js/StickyHeader.js",
+    ThemeToggle: "./js/ThemeToggle.js",
+    Loader: "./js/Loader.js",
+  },
   mode: "development",
   output: {
     path: path.resolve(__dirname, "dist"),

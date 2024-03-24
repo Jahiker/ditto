@@ -28,7 +28,6 @@ $header_settings = get_field("header_settings", "options");
     const _dittoURI_ = "<?= get_template_directory_uri() ?>",
       _dittoURL_ = "<?= get_site_url() ?>";
   </script>
-  <script src="<?= get_template_directory_uri() . '/dist/StickyHeader.bundle.js' ?>" defer></script>
 </head>
 
 <body <?php body_class(); ?>>

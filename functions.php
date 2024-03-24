@@ -17,5 +17,5 @@ $includes = array(
 );
 
 foreach ($includes as $file) {
-  require_once __DIR__ . '\inc' . $file;
+  require_once __DIR__ . '/inc' . $file;
 }
